@@ -1,0 +1,29 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/oj cloud.png-8e37b71db78183f6e712e0df09c7aa1c.stex"
+
+[deps]
+
+source_file="res://Images/oj cloud.png"
+dest_files=[ "res://.import/oj cloud.png-8e37b71db78183f6e712e0df09c7aa1c.stex" ]
+
+[params]
+
+compress/mode=1
+compress/lossy_quality=0.5
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=1
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=1
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

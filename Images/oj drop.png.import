@@ -1,0 +1,29 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/oj drop.png-c1797237bb03a5bb5e97b3ad8dc86c4f.stex"
+
+[deps]
+
+source_file="res://Images/oj drop.png"
+dest_files=[ "res://.import/oj drop.png-c1797237bb03a5bb5e97b3ad8dc86c4f.stex" ]
+
+[params]
+
+compress/mode=1
+compress/lossy_quality=0.5
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=1
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=1
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

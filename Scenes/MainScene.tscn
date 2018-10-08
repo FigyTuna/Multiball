@@ -1,0 +1,1203 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Scenes/MainScene.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Board.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Flipper.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Bumper.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Wall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Spawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/TargetHandler.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Box.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Raindrop.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Cover.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Images/oj cloud.png" type="Texture" id=11]
+[ext_resource path="res://Sounds/bell.wav" type="AudioStream" id=12]
+[ext_resource path="res://Sounds/button.wav" type="AudioStream" id=13]
+[ext_resource path="res://Sounds/bump.wav" type="AudioStream" id=14]
+[ext_resource path="res://Sounds/target.wav" type="AudioStream" id=15]
+[ext_resource path="res://Sounds/sad.wav" type="AudioStream" id=16]
+[ext_resource path="res://Sounds/pinball.ogg" type="AudioStream" id=17]
+[ext_resource path="res://Scenes/Scoreboard.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/Stars.tscn" type="PackedScene" id=19]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "start"
+length = 2.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera:transform")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 1, 0, 0, 0, 0.0949271, 0.995484, 0, -0.995484, 0.0949271, 0, 14.6882, -1.73379 ), Transform( 1, 0, 0, 0, 0.664983, 0.74686, 0, -0.74686, 0.664983, 0, 14.6891, 13.5324 ) ]
+}
+
+[sub_resource type="SphereShape" id=2]
+
+radius = 1.0
+
+[sub_resource type="SpatialMaterial" id=3]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 0.992188, 1, 0, 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = true
+emission = Color( 1, 0.9375, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Albedo", "Emission" ]
+
+[sub_resource type="SphereMesh" id=4]
+
+material = SubResource( 3 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+radius = 1.0
+height = 2.0
+radial_segments = 64
+rings = 32
+is_hemisphere = false
+
+[node name="MainScene" type="Spatial" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Camera" type="Camera" parent="." index="0"]
+
+transform = Transform( 1, 0, 0, 0, 0.0949271, 0.995484, 0, -0.995484, 0.0949271, 0, 14.6882, -1.73379 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 80.0
+size = 1.0
+near = 0.05
+far = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Board" parent="." index="1" instance=ExtResource( 2 )]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="." index="2"]
+
+transform = Transform( 0.945529, -0.302492, 0.120303, 0, 0.369554, 0.929209, -0.325537, -0.878595, 0.349424, 15.1507, 22.004, 0 )
+layers = 1
+light_color = Color( 0, 0.953125, 1, 1 )
+light_energy = 2.5
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.1
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+directional_shadow_mode = 2
+directional_shadow_split_1 = 0.1
+directional_shadow_split_2 = 0.2
+directional_shadow_split_3 = 0.5
+directional_shadow_blend_splits = false
+directional_shadow_normal_bias = 0.8
+directional_shadow_bias_split_scale = 0.25
+directional_shadow_depth_range = 0
+directional_shadow_max_distance = 200.0
+_sections_unfolded = [ "Light", "Shadow" ]
+
+[node name="BoardObjects" type="Spatial" parent="." index="3"]
+
+editor/display_folded = true
+visible = false
+
+[node name="LeftFlipper" parent="BoardObjects" index="0" instance=ExtResource( 3 )]
+
+transform = Transform( 0.618072, 0, -0.350739, 0, 1, 0, 0.231488, 0, 0.936473, -2.21409, 2.11519, 11.759 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="LeftFlipper2" parent="BoardObjects" index="1" instance=ExtResource( 3 )]
+
+transform = Transform( 0.65673, 0, -0.298265, 0, 0.1, 0, 0.0656183, 0, 2.98514, -2.00164, 0.903021, 11.4154 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="RightFlipper" parent="BoardObjects" index="2" instance=ExtResource( 3 )]
+
+transform = Transform( 0.618072, 0, 0.350739, 0, 1, 0, -0.231488, 0, 0.936473, 2.21409, 2.11519, 11.759 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="RightFlipper2" parent="BoardObjects" index="3" instance=ExtResource( 3 )]
+
+transform = Transform( 0.65673, 0, 0.298265, 0, 0.1, 0, -0.0656183, 0, 2.98514, 2.00164, 0.903021, 11.4154 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="LBumper" parent="BoardObjects" index="4" instance=ExtResource( 4 )]
+
+transform = Transform( 1.09095, 0, -0.292599, 0, 1, 0, 1.1704, 0, 0.272737, -4.48189, 1.299, 7.83324 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="RBumper" parent="BoardObjects" index="5" instance=ExtResource( 4 )]
+
+transform = Transform( 1.09095, 0, 0.292599, 0, 1, 0, -1.1704, 0, 0.272737, 4.48189, 1.299, 7.83324 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall4" parent="BoardObjects" index="6" instance=ExtResource( 5 )]
+
+transform = Transform( -0.0975824, 0, -0.0174848, 0, 1, 0, 0.021856, 0, -0.0780659, -5.29977, 1.301, 7.80968 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall5" parent="BoardObjects" index="7" instance=ExtResource( 5 )]
+
+transform = Transform( -0.00204717, 0, -0.0549885, 0, 1, 0, 0.099979, 0, -0.00112595, -4.17934, 1.301, 9.00557 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall22" parent="BoardObjects" index="8" instance=ExtResource( 5 )]
+
+transform = Transform( -6.45545e-10, -0.0396233, -0.0549568, 0.1, -1.62921e-07, 0, -1.62793e-08, -0.999215, 0.00217928, -4.50283, 2.30282, 7.98346 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall23" parent="BoardObjects" index="9" instance=ExtResource( 5 )]
+
+transform = Transform( -1.11789e-09, -0.0396232, 0.0549568, 0.1, -2.8213e-07, 0, 2.81908e-08, 0.999215, 0.00217928, 4.50282, 2.30282, 7.98346 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall10" parent="BoardObjects" index="10" instance=ExtResource( 5 )]
+
+transform = Transform( -0.00204717, 0, 0.0549885, 0, 1, 0, -0.099979, 0, -0.00112595, 4.17934, 1.301, 9.00557 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall11" parent="BoardObjects" index="11" instance=ExtResource( 5 )]
+
+transform = Transform( -0.0975824, 0, 0.0174848, 0, 1, 0, -0.021856, 0, -0.0780659, 5.29977, 1.301, 7.80968 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall6" parent="BoardObjects" index="12" instance=ExtResource( 5 )]
+
+transform = Transform( -0.035594, 0, -0.0934509, 0, 1, 0, 0.0934509, 0, -0.035594, -4.97493, 2, 10.635 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall8" parent="BoardObjects" index="13" instance=ExtResource( 5 )]
+
+transform = Transform( -0.035594, 0, 0.0934509, 0, 1, 0, -0.0934509, 0, -0.035594, 4.97493, 2, 10.635 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall7" parent="BoardObjects" index="14" instance=ExtResource( 5 )]
+
+transform = Transform( -0.0984811, 0, -0.0208359, 0, 1, 0, 0.0173633, 0, -0.118177, -6.72319, 2, 8.20448 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall9" parent="BoardObjects" index="15" instance=ExtResource( 5 )]
+
+transform = Transform( -0.0984811, 0, 0.0208359, 0, 1, 0, -0.0173633, 0, -0.118177, 6.72319, 2, 8.20448 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Spawner" parent="." index="4" instance=ExtResource( 6 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4.53061, 14.5776 )
+_sections_unfolded = [ "Transform" ]
+board_path = NodePath("../Board")
+right = true
+
+[node name="Spawner2" parent="." index="5" instance=ExtResource( 6 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 4.53061, 14.5776 )
+_sections_unfolded = [ "Transform" ]
+board_path = NodePath("../Board")
+
+[node name="TargetHandler" parent="." index="6" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57821, -10.5043 )
+
+[node name="Box" parent="." index="7" instance=ExtResource( 8 )]
+
+transform = Transform( -1.38483e-06, 0, -8.5, 0, 8.5, 0, 8.5, 0, -1.38483e-06, 0, 2.40065, -1.8127 )
+
+[node name="Wall22" parent="." index="8" instance=ExtResource( 5 )]
+
+transform = Transform( -0.0984811, 0, -0.0225723, 0, 1, 0, 0.0173633, 0, -0.128025, -6.72319, 0.145, 8.20448 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall26" parent="." index="9" instance=ExtResource( 5 )]
+
+transform = Transform( -0.0984811, 0, -0.0225723, 0, 1, 0, 0.0173633, 0, -0.128025, -6.72319, 0.145, 8.20448 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall24" parent="." index="10" instance=ExtResource( 5 )]
+
+transform = Transform( -0.0984811, 0, 0.0225722, 0, 1, 0, -0.0173633, 0, -0.128025, 6.72319, 0.145, 8.20448 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall23" parent="." index="11" instance=ExtResource( 5 )]
+
+transform = Transform( -0.035594, 0, -0.0962544, 0, 1, 0, 0.0934509, 0, -0.0366619, -4.97493, 0.145, 10.635 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall25" parent="." index="12" instance=ExtResource( 5 )]
+
+transform = Transform( -0.0355941, 0, 0.0962544, 0, 1, 0, -0.0934509, 0, -0.0366619, 4.97493, 0.145, 10.635 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Raindrop" parent="." index="13" instance=ExtResource( 9 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.81181, 1.37242, 0.0682878 )
+
+[node name="Raindrop3" parent="." index="14" instance=ExtResource( 9 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.189362, 1.37242, 1.87538 )
+
+[node name="Raindrop4" parent="." index="15" instance=ExtResource( 9 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.172399, 1.37242, 5.26067 )
+
+[node name="Raindrop5" parent="." index="16" instance=ExtResource( 9 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.50362, 1.37242, 0.591803 )
+
+[node name="Raindrop6" parent="." index="17" instance=ExtResource( 9 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.70381, 1.37242, 3.83883 )
+
+[node name="Raindrop2" parent="." index="18" instance=ExtResource( 9 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0485, 1.37242, 3.77593 )
+
+[node name="Cover" parent="." index="19" instance=ExtResource( 10 )]
+
+[node name="Cover4" parent="." index="20" instance=ExtResource( 10 )]
+
+transform = Transform( 0.937521, 0, 0.869823, 0, 0.1, 0, -0.347929, 0, 2.3438, -8.14929, 2.5457, 2.90373 )
+
+[node name="Cover5" parent="." index="21" instance=ExtResource( 10 )]
+
+transform = Transform( 0.937521, 0, -0.869823, 0, 0.1, 0, 0.347929, 0, 2.3438, 8.14929, 2.5457, 2.90373 )
+
+[node name="Cover2" parent="." index="22" instance=ExtResource( 10 )]
+
+transform = Transform( 1, 0, 0, 0, 0.1, 0, 0, 0, 19.0066, 9.07209, 2.5457, -3.46499 )
+
+[node name="Cover3" parent="." index="23" instance=ExtResource( 10 )]
+
+transform = Transform( 10, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 2.5457, -21.5 )
+
+[node name="CloudSprite" type="Sprite3D" parent="." index="24"]
+
+transform = Transform( 1.91835, -0.565636, -2.47247e-08, 0.0592341, 0.200892, 1.989, -0.562525, -1.9078, 0.209442, -5.45293, 3.23858, -17.0975 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+centered = true
+offset = Vector2( 0, 0 )
+flip_h = false
+flip_v = false
+modulate = Color( 1, 1, 1, 1 )
+opacity = 1.0
+pixel_size = 0.01
+axis = 2
+transparent = true
+shaded = false
+double_sided = true
+alpha_cut = 0
+texture = ExtResource( 11 )
+vframes = 1
+hframes = 1
+frame = 0
+region_enabled = false
+region_rect = Rect2( 0, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CloudSprite2" type="Sprite3D" parent="." index="25"]
+
+transform = Transform( 1.94912, 0.448235, 1.9593e-08, -0.0658873, 0.286507, 1.97828, 0.443366, -1.92795, 0.293985, 5.76924, 3.40436, -16.9311 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+centered = true
+offset = Vector2( 0, 0 )
+flip_h = false
+flip_v = false
+modulate = Color( 1, 1, 1, 1 )
+opacity = 1.0
+pixel_size = 0.01
+axis = 2
+transparent = true
+shaded = false
+double_sided = true
+alpha_cut = 0
+texture = ExtResource( 11 )
+vframes = 1
+hframes = 1
+frame = 0
+region_enabled = false
+region_rect = Rect2( 0, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="26"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/start = SubResource( 1 )
+blend_times = [  ]
+
+[node name="Bell1" type="AudioStreamPlayer" parent="." index="27"]
+
+stream = ExtResource( 12 )
+volume_db = -5.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Bell2" type="AudioStreamPlayer" parent="." index="28"]
+
+stream = ExtResource( 12 )
+volume_db = -5.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Bell3" type="AudioStreamPlayer" parent="." index="29"]
+
+stream = ExtResource( 12 )
+volume_db = -5.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="FlipperSound" type="AudioStreamPlayer" parent="." index="30"]
+
+stream = ExtResource( 13 )
+volume_db = -2.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="BumperSound" type="AudioStreamPlayer" parent="." index="31"]
+
+stream = ExtResource( 14 )
+volume_db = -22.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="TargetSound" type="AudioStreamPlayer" parent="." index="32"]
+
+stream = ExtResource( 15 )
+volume_db = -22.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="SadSound" type="AudioStreamPlayer" parent="." index="33"]
+
+stream = ExtResource( 16 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="bg" type="AudioStreamPlayer" parent="." index="34"]
+
+stream = ExtResource( 17 )
+volume_db = 7.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[node name="Scoreboard" parent="." index="35" instance=ExtResource( 18 )]
+
+[node name="OmniLight1" type="OmniLight" parent="." index="36"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97333, 11.9202, 1.43256 )
+layers = 1
+light_color = Color( 0.969025, 1, 0.433594, 1 )
+light_energy = 9.64
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 17.5
+omni_attenuation = 0.32988
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Light", "Omni" ]
+
+[node name="OmniLight2" type="OmniLight" parent="." index="37"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.60893, 7.39199, 7.05685 )
+layers = 1
+light_color = Color( 0.969025, 1, 0.433594, 1 )
+light_energy = 9.64
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 10.8
+omni_attenuation = 0.0236833
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Light", "Omni" ]
+
+[node name="OmniLight3" type="OmniLight" parent="." index="38"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.378698, 8.34431, -8.37486 )
+layers = 1
+light_color = Color( 0.969025, 1, 0.433594, 1 )
+light_energy = 16.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 12.2
+omni_attenuation = 1.17413e-06
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Light", "Omni" ]
+
+[node name="OmniLight4" type="OmniLight" parent="." index="39"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.594066, 21.9153, 1.43256 )
+layers = 1
+light_color = Color( 0.969025, 1, 0.433594, 1 )
+light_energy = 9.64
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 10.8
+omni_attenuation = 0.0236833
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Light", "Omni" ]
+
+[node name="OmniLight5" type="OmniLight" parent="." index="40"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.594066, 21.9153, 1.43256 )
+layers = 1
+light_color = Color( 0.945312, 0.932042, 0.0960083, 1 )
+light_energy = 9.91
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 10.8
+omni_attenuation = 0.0236833
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Light", "Omni" ]
+
+[node name="Lights" type="Spatial" parent="." index="41"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.40564, 0 )
+
+[node name="LightPos1" type="Spatial" parent="Lights" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.70416, 3.03001, 1.23978 )
+
+[node name="LightPos2" type="Spatial" parent="Lights" index="1"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.72461, -1.49704, 5.83758 )
+
+[node name="LightPos3" type="Spatial" parent="Lights" index="2"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.29271, -8.85428 )
+
+[node name="LightPos4" type="Spatial" parent="Lights" index="3"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82041, 8.20287, 0 )
+
+[node name="LightPos5" type="Spatial" parent="Lights" index="4"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0023, -2.94984, 6.65722 )
+
+[node name="DeadZone" type="Area" parent="." index="42"]
+
+editor/display_folded = true
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -4.60443, 1.72657, 8.43575 )
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 1
+collision_mask = 1
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="DeadZone" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.548649, 0 )
+shape = SubResource( 2 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="DeadZone2" type="Area" parent="." index="43"]
+
+editor/display_folded = true
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 4.59254, 1.74563, 8.42884 )
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 1
+collision_mask = 1
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="DeadZone2" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.548649, 0 )
+shape = SubResource( 2 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="Stars" parent="." index="44" instance=ExtResource( 19 )]
+
+transform = Transform( 1, 0, 0, 0, 0.909503, 0.415696, 0, -0.415696, 0.909503, 0, -11.2962, -45.206 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Strip" type="Spatial" parent="." index="45"]
+
+editor/display_folded = true
+
+[node name="MeshInstance" type="MeshInstance" parent="Strip" index="0"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -9.09521, 2.61562, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance9" type="MeshInstance" parent="Strip" index="1"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -9.09521, 2.61562, 10.6856 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance6" type="MeshInstance" parent="Strip" index="2"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.10457, 2.61562, 2.02872 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance14" type="MeshInstance" parent="Strip" index="3"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.10457, 2.61562, 12.4595 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance3" type="MeshInstance" parent="Strip" index="4"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -9.09521, 2.61562, -7.26198 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance10" type="MeshInstance" parent="Strip" index="5"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -9.09521, 2.61562, 3.42365 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance7" type="MeshInstance" parent="Strip" index="6"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.10457, 2.61562, -5.23327 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance12" type="MeshInstance" parent="Strip" index="7"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.10457, 2.61562, 5.19755 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance2" type="MeshInstance" parent="Strip" index="8"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -9.09521, 2.61562, -3.69899 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance11" type="MeshInstance" parent="Strip" index="9"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -9.09521, 2.61562, 6.98664 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance8" type="MeshInstance" parent="Strip" index="10"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.10457, 2.61562, -1.67027 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance13" type="MeshInstance" parent="Strip" index="11"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.10457, 2.61562, 8.76054 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance4" type="MeshInstance" parent="Strip" index="12"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -9.09521, 2.61562, -10.961 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance5" type="MeshInstance" parent="Strip" index="13"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.10457, 2.61562, -8.93226 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Strip2" type="Spatial" parent="." index="46"]
+
+editor/display_folded = true
+visible = false
+
+[node name="MeshInstance" type="MeshInstance" parent="Strip2" index="0"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -9.09521, 2.61562, 1.7622 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance11" type="MeshInstance" parent="Strip2" index="1"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -9.09521, 2.61562, 12.4054 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance6" type="MeshInstance" parent="Strip2" index="2"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.10457, 2.61562, 0.266575 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance14" type="MeshInstance" parent="Strip2" index="3"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.10457, 2.61562, 10.8236 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance3" type="MeshInstance" parent="Strip2" index="4"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -9.09521, 2.61562, -5.49978 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance9" type="MeshInstance" parent="Strip2" index="5"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -9.09521, 2.61562, 5.14343 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance7" type="MeshInstance" parent="Strip2" index="6"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.10457, 2.61562, -6.99541 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance12" type="MeshInstance" parent="Strip2" index="7"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.10457, 2.61562, 3.56158 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance2" type="MeshInstance" parent="Strip2" index="8"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -9.09521, 2.61562, -1.93679 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance10" type="MeshInstance" parent="Strip2" index="9"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -9.09521, 2.61562, 8.70643 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance8" type="MeshInstance" parent="Strip2" index="10"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.10457, 2.61562, -3.43241 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance13" type="MeshInstance" parent="Strip2" index="11"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.10457, 2.61562, 7.12458 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance4" type="MeshInstance" parent="Strip2" index="12"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -9.09521, 2.61562, -9.19877 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance5" type="MeshInstance" parent="Strip2" index="13"]
+
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 9.10457, 2.61562, -10.6944 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="flipper_go" from="Board" to="." method="_on_flipper_go"]
+
+[connection signal="all_down" from="TargetHandler" to="." method="_on_all_targets_down"]
+
+[connection signal="score" from="Raindrop" to="." method="_on_raindrop_score"]
+
+[connection signal="score" from="Raindrop3" to="." method="_on_raindrop_score"]
+
+[connection signal="score" from="Raindrop4" to="." method="_on_raindrop_score"]
+
+[connection signal="score" from="Raindrop5" to="." method="_on_raindrop_score"]
+
+[connection signal="score" from="Raindrop6" to="." method="_on_raindrop_score"]
+
+[connection signal="score" from="Raindrop2" to="." method="_on_raindrop_score"]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
+
+[connection signal="body_entered" from="DeadZone" to="." method="_on_DeadZone_entered"]
+
+[connection signal="body_entered" from="DeadZone2" to="." method="_on_DeadZone_entered"]
+
+
